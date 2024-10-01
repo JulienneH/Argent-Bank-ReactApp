@@ -1,12 +1,10 @@
 import React from "react";
 import AccountSection from "../components/AccountSection";
 import EditButton from "../components/EditButton";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+
 const AccountsPage = () => {
   return (
     <>
-      <Header />
       <main className="main bg-dark">
         <div className="header">
           <h1>
@@ -33,7 +31,6 @@ const AccountsPage = () => {
           description="Current Balance"
         />
       </main>
-      <Footer />
     </>
   );
 };

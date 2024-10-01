@@ -1,13 +1,13 @@
 import React from "react";
-
-import "./css/main.css";
+import { BrowserRouter as Router } from "react-router-dom";
 import AppRouter from "./AppRouter";
+import "./css/main.css";
 
 function App() {
   return (
-    <>
-      <AppRouter></AppRouter>
-    </>
+    <Router>
+      <AppRouter />
+    </Router>
   );
 }
 
