@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { login } from "../redux/actions/authentificationAction";
 
 const FormLog = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate("/AccountsPage");
+
+    // Dispatch l'action login et attend la reponse
+    const resultAction = await dispatch(login({ email: username, password }));
+
+    // Vérifie si la connexion a réussi
+    if (login.fulfilled.match(resultAction)) {
+      // Si la connexion a réussi on redirige l'utilisateur vers AccountsPage
+      navigate("/AccountsPage");
+    } else {
+      // sinon on affiche un message d'erreur et on gère l'echec
+      setErrorMessage("Email ou mot de passe incorrect");
+
+      console.error("Échec de la connexion :", resultAction.error.message);
+    }
   };
 
   return (
@@ -14,11 +33,21 @@ const FormLog = () => {
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" />
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
         <div className="input-wrapper">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" />
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <div className="input-remember">
           <input type="checkbox" id="remember-me" />
@@ -28,6 +57,7 @@ const FormLog = () => {
           Sign In
         </button>
       </form>
+      {errorMessage && <p>{errorMessage}</p>}
     </>
   );
 };
