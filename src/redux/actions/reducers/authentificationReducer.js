@@ -1,4 +1,4 @@
-import { login } from "../authentificationAction";
+import { login, logout } from "../authentificationAction";
 import fetchUserProfile from "../actionUserProfile";
 
 const initialState = {
@@ -21,6 +21,13 @@ const authentificationReducer = (state = initialState, action) => {
       return {
         ...state,
         username: action.payload.username, // Récupération du nom d'utilisateur
+      };
+    case logout.type: // Gérer la déconnexion
+      return {
+        ...state,
+        isAuthentificated: false,
+        token: null,
+        username: null,
       };
 
     case login.rejected.type:

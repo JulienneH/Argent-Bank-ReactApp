@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
 
 export const login = createAsyncThunk("auth/login", async (credentials) => {
   const response = await fetch("http://localhost:3001/api/v1/user/login", {
@@ -23,3 +23,5 @@ export const login = createAsyncThunk("auth/login", async (credentials) => {
     username: data.body.username,
   };
 });
+//action de déconnexion
+export const logout = createAction("auth/logout");
