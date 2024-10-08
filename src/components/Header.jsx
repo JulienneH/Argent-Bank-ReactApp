@@ -1,20 +1,38 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/argentBankLogo.webp";
 
-const Header = () => (
-  <nav className="main-nav">
-    <Link className="main-nav-logo" to="/">
-      <img className="main-nav-logo-image" src={logo} alt="Argent Bank Logo" />
-      <h1 className="sr-only">Argent Bank</h1>
-    </Link>
-    <div>
-      <Link className="main-nav-item" to="/LoginPage">
-        <i className="fa fa-user-circle"></i>
-        Sign In
+const Header = () => {
+  const isAuthentificated = useSelector((state) => state.isAuthentificated);
+  const username = useSelector((state) => state.username);
+
+  return (
+    <nav className="main-nav">
+      <Link className="main-nav-logo" to="/">
+        <img
+          className="main-nav-logo-image"
+          src={logo}
+          alt="Argent Bank Logo"
+        />
+        <h1 className="sr-only">Argent Bank</h1>
       </Link>
-    </div>
-  </nav>
-);
+      <div>
+        {isAuthentificated ? (
+          <Link className="main-nav-item" to="/LoginPage">
+            <i className="fa fa-user-circle"></i>
+            {username}
+            Sign Up
+          </Link>
+        ) : (
+          <Link className="main-nav-item" to="/LoginPage">
+            <i className="fa fa-user-circle"></i>
+            Sign In
+          </Link>
+        )}
+      </div>
+    </nav>
+  );
+};
 
 export default Header;

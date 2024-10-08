@@ -10,10 +10,16 @@ export const login = createAsyncThunk("auth/login", async (credentials) => {
   });
 
   if (!response.ok) {
-    const errorData = await response.json(); // Obtenir les données d'erreur de l'API
+    const errorData = await response.json();
     throw new Error(errorData.message || "Échec de la connexion");
   }
 
   const data = await response.json();
-  return data; // Retourne les données en cas de succès
+
+  console.log("Données de l’utilisateur après connexion réussie :", data);
+
+  return {
+    token: data.body.token,
+    username: data.body.username,
+  };
 });
