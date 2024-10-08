@@ -1,17 +1,24 @@
 import React from "react";
 import AccountSection from "../components/AccountSection";
 import EditButton from "../components/EditButton";
+import { useSelector } from "react-redux";
 
 const AccountsPage = () => {
+  const isAuthentificated = useSelector((state) => state.isAuthentificated);
+  const username = useSelector((state) => state.username);
   return (
     <>
       <main className="main bg-dark">
         <div className="header">
-          <h1>
-            Welcome back
-            <br />
-            Tony Jarvis!
-          </h1>
+          {isAuthentificated ? (
+            <h1>
+              Welcome back
+              <br />
+              {username}
+            </h1>
+          ) : (
+            <h1>Merci de vous identifier</h1>
+          )}
           <EditButton />
         </div>
         <h2 className="sr-only">Accounts</h2>
