@@ -1,6 +1,6 @@
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-html {
+html #root {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -8,7 +8,7 @@ html {
   color: #2c3e50;
 }
 
-body {
+body #root {
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@ body {
 }
 
 .hero {
-  background-image: url("../assets/img/bank-tree.jpeg");
+  background-image: url("../assets/img/bank-tree.webp");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -290,4 +290,23 @@ body {
   .transaction-button {
     width: 200px;
   }
+}
+
+.no-underline {
+  text-decoration: none;
+  color: white;
+}
+/* ErrorPage */
+.error {
+  margin-top: 200px;
+}
+.error_message {
+  color: white;
+  font-size: 45px;
+}
+.error_button {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-left: 40%;
 }
