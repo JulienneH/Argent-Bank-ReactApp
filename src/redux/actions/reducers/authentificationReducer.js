@@ -1,5 +1,6 @@
 import { login, logout } from "../authentificationAction";
 import fetchUserProfile from "../actionUserProfile";
+import { updateUsername } from "../usernameAction";
 
 const initialState = {
   isAuthentificated: !!localStorage.getItem("token"),
@@ -26,7 +27,18 @@ const authentificationReducer = (state = initialState, action) => {
         username: action.payload.username, // Récupération du nom d'utilisateur
       };
 
-    case logout.type: // Gérer la déconnexion
+    //gérer la mise à jour du username
+
+    case updateUsername.fulfilled.type:
+      localStorage.setItem("username", action.payload.username);
+      return {
+        ...state,
+        username: action.payload.username,
+      };
+
+    // Gérer la déconnexion
+
+    case logout.type:
       localStorage.removeItem("token");
       localStorage.removeItem("username");
       return {
