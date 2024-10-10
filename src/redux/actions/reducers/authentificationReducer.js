@@ -2,19 +2,22 @@ import { login, logout } from "../authentificationAction";
 import fetchUserProfile from "../actionUserProfile";
 
 const initialState = {
-  isAuthentificated: false,
-  token: null,
-  username: null,
+  isAuthentificated: !!localStorage.getItem("token"),
+  token: localStorage.getItem("token") || null,
+  username: localStorage.getItem("username") || null,
 };
 
 const authentificationReducer = (state = initialState, action) => {
   switch (action.type) {
     case login.fulfilled.type:
       console.log("Token après connexion réussie:", action.payload.token);
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("username", action.payload.username);
       return {
         ...state,
         isAuthentificated: true,
         token: action.payload.token,
+        username: action.payload.username,
       };
 
     case fetchUserProfile.fulfilled.type:
@@ -22,7 +25,10 @@ const authentificationReducer = (state = initialState, action) => {
         ...state,
         username: action.payload.username, // Récupération du nom d'utilisateur
       };
+
     case logout.type: // Gérer la déconnexion
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
       return {
         ...state,
         isAuthentificated: false,

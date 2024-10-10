@@ -22,6 +22,7 @@ const fetchUserProfile = createAsyncThunk(
       const profileData = await profileResponse.json();
 
       console.log("Profil de l’utilisateur:", profileData);
+      localStorage.setItem("username", profileData.body.userName);
 
       return {
         token: token,

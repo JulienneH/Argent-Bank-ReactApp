@@ -33,7 +33,7 @@ const Header = () => {
           <span className="main-nav-item" onClick={handleLogout}>
             <i className="fa fa-user-circle"></i>
             {username}
-            Sign Up
+            Lougout
           </span>
         ) : (
           <Link className="main-nav-item" to="/LoginPage">
