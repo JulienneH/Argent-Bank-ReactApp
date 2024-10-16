@@ -8,7 +8,7 @@ const initialState = {
   username: localStorage.getItem("username") || null,
 };
 
-const authentificationReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case login.fulfilled.type:
       console.log("Token après connexion réussie:", action.payload.token);
@@ -60,4 +60,4 @@ const authentificationReducer = (state = initialState, action) => {
   }
 };
 
-export default authentificationReducer;
+export default userReducer;
