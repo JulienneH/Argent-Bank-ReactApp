@@ -34,19 +34,25 @@ const FormLog = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username" className="sign-in-label">
+            Username
+          </label>
           <input
             type="text"
             id="username"
+            className="sign-in-input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" className="sign-in-label">
+            Password
+          </label>
           <input
             type="password"
             id="password"
+            className="sign-in-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

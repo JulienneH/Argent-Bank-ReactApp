@@ -42,6 +42,7 @@ body #root {
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
+  height: 70px;
 }
 
 .main-nav a {
@@ -56,6 +57,7 @@ body #root {
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
+  font-size: 20px;
 }
 
 .main-nav-item:hover {
@@ -69,7 +71,7 @@ body #root {
 
 .main-nav-logo-image {
   max-width: 100%;
-  width: 200px;
+  width: 250px;
 }
 
 .hero {
@@ -84,7 +86,7 @@ body #root {
 .hero-content {
   position: relative;
   top: 2rem;
-  width: 200px;
+  width: 300px;
   background: white;
   padding: 2rem;
   text-align: left;
@@ -104,30 +106,34 @@ body #root {
 
 @media (min-width: 920px) {
   .hero {
-    height: 400px;
+    height: 500px;
     background-position: 0% 33%;
   }
 
   .hero-content {
     position: absolute;
-    top: 50px;
+    top: 45px;
     right: 50px;
-    width: 300px;
-    margin: 2rem;
+    width: 380px;
+    margin: 5rem;
   }
 
   .hero-content .subtitle {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .hero-content .text {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 
 .features {
   display: flex;
   flex-direction: column;
+}
+
+.feature-text {
+  font-size: 1.4rem;
 }
 
 @media (min-width: 920px) {
@@ -137,7 +143,7 @@ body #root {
 }
 
 .feature-icon {
-  width: 100px;
+  width: 130px;
   border: 10px solid #00bc77;
   border-radius: 50%;
   padding: 1rem;
@@ -150,7 +156,7 @@ body #root {
 
 .feature-item-title {
   color: #222;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -159,16 +165,17 @@ body #root {
   display: block;
   width: 100%;
   padding: 8px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  height: 50px;
+  border: none;
 }
 
 .sign-in-content {
-  box-sizing: border-box;
   background-color: white;
   width: 300px;
   margin: 0 auto;
@@ -179,9 +186,19 @@ body #root {
 .sign-in-icon {
   font-size: 5rem;
 }
+.sign-in-title {
+  font-size: 30px;
+}
+.sign-in-label {
+  font-size: 20px;
+}
 
+.sign-in-input {
+  height: 30px;
+}
 .input-remember {
   display: flex;
+  font-size: 20px;
 }
 
 .input-remember label {
@@ -214,6 +231,7 @@ body #root {
 .footer-text {
   margin: 0;
   padding: 0;
+  font-size: 20px;
 }
 
 .account {
@@ -304,9 +322,15 @@ body #root {
   color: white;
   font-size: 45px;
 }
+
+.error_buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
 .error_button {
-  width: 500px;
+  width: 200px;
   display: flex;
   justify-content: center;
-  margin-left: 40%;
 }

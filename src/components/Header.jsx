@@ -32,8 +32,7 @@ const Header = () => {
         {isAuthentificated ? (
           <span className="main-nav-item" onClick={handleLogout}>
             <i className="fa fa-user-circle"></i>
-            {username}
-            Lougout
+            {username}, Lougout
           </span>
         ) : (
           <Link className="main-nav-item" to="/LoginPage">
