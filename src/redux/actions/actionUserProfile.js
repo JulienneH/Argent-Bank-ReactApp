@@ -23,11 +23,15 @@ const fetchUserProfile = createAsyncThunk(
 
       console.log("Profil de l’utilisateur:", profileData);
       localStorage.setItem("username", profileData.body.userName);
+      localStorage.setItem("firstName", profileData.body.firstName);
+      localStorage.setItem("lastName", profileData.body.lastName);
 
       return {
         token: token,
         userId: profileData.body.id,
         username: profileData.body.userName,
+        firstName: profileData.body.firstName,
+        lastName: profileData.body.lastName,
       };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

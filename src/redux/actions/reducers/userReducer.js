@@ -6,6 +6,8 @@ const initialState = {
   isAuthentificated: !!localStorage.getItem("token"),
   token: localStorage.getItem("token") || null,
   username: localStorage.getItem("username") || null,
+  firstName: localStorage.getItem("firstName") || null,
+  lastName: localStorage.getItem("lastName") || null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -14,17 +16,23 @@ const userReducer = (state = initialState, action) => {
       console.log("Token après connexion réussie:", action.payload.token);
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("username", action.payload.username);
+      localStorage.setItem("firstName", action.payload.firstName);
+      localStorage.setItem("lastName", action.payload.lastName);
       return {
         ...state,
         isAuthentificated: true,
         token: action.payload.token,
         username: action.payload.username,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
       };
 
     case fetchUserProfile.fulfilled.type:
       return {
         ...state,
-        username: action.payload.username, // Récupération du nom d'utilisateur
+        username: action.payload.username,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName, // Récupération des données de l'utilisateur
       };
 
     //gérer la mise à jour du username
@@ -41,11 +49,15 @@ const userReducer = (state = initialState, action) => {
     case logout.type:
       localStorage.removeItem("token");
       localStorage.removeItem("username");
+      localStorage.removeItem("firstName");
+      localStorage.removeItem("lastName");
       return {
         ...state,
         isAuthentificated: false,
         token: null,
         username: null,
+        firstName: null,
+        lastName: null,
       };
 
     case login.rejected.type:
@@ -54,6 +66,8 @@ const userReducer = (state = initialState, action) => {
         isAuthentificated: false,
         token: null, // Réinitialiser le token en cas d'erreur
         username: null,
+        firstName: null,
+        lastName: null,
       };
     default:
       return state;

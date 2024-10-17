@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUsername } from "../redux/actions/usernameAction";
+import fetchUserProfile from "../redux/actions/actionUserProfile";
 
 const FormUserInfo = () => {
   const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [confirmationMessage, setConfirmationMessage] = useState("");
+
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const currentUsername = useSelector((state) => state.username);
+  const currentFirstName = useSelector((state) => state.firstName);
+  const currentLastName = useSelector((state) => state.lastName);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUserProfile(token));
+    }
+  }, [token, dispatch]);
+
+  useEffect(() => {
+    setUsername(currentUsername);
+    setFirstName(currentFirstName);
+    setLastName(currentLastName);
+  }, [currentUsername, currentFirstName, currentLastName]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -23,13 +42,14 @@ const FormUserInfo = () => {
 
   const handleCancel = (event) => {
     event.preventDefault();
-    // Réinitialiser le champ de username à la valeur actuelle
     setUsername(currentUsername);
+    setFirstName(currentFirstName);
+    setLastName(currentLastName);
     setConfirmationMessage("");
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label>User name</label>
@@ -37,16 +57,26 @@ const FormUserInfo = () => {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} // Met à jour l'état local
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="input-wrapper">
           <label>First Name</label>
-          <input type="text" />
+          <input
+            type="text"
+            id="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </div>
         <div className="input-wrapper">
           <label>Last Name</label>
-          <input type="text" />
+          <input
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
         </div>
 
         <button type="submit" className="sign-in-button">
@@ -57,7 +87,7 @@ const FormUserInfo = () => {
         </button>
       </form>
       {confirmationMessage && <p>{confirmationMessage}</p>}
-    </>
+    </div>
   );
 };
 
