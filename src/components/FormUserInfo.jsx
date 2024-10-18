@@ -67,6 +67,7 @@ const FormUserInfo = () => {
             id="firstName"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            disabled
           />
         </div>
         <div className="input-wrapper">
@@ -76,6 +77,7 @@ const FormUserInfo = () => {
             id="lastName"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            disabled
           />
         </div>
 
