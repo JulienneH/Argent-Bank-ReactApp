@@ -1,4 +1,4 @@
-@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
 
 html #root {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -333,4 +333,56 @@ body #root {
   width: 200px;
   display: flex;
   justify-content: center;
+}
+/*editPage accounts section */
+.cards {
+  background-color: #3d3d3d;
+  border-radius: 5px;
+  width: 70%;
+  margin-top: 30px;
+  display: flex;
+  margin-left: 15%;
+  margin-bottom: 50px;
+}
+.cards_content {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 20px;
+  height: 150px;
+  margin-top: 25px;
+  width: 90%;
+}
+.cards_title {
+  font-size: 25px;
+  margin: 5px;
+}
+.cards_amount {
+  font-size: 50px;
+  margin: 5px;
+}
+.cards_balance {
+  font-size: 15px;
+  margin: 5px;
+}
+.cards_icon {
+  font-size: 80px;
+  display: flex;
+  color: white;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .cards_content {
+    width: 75%;
+  }
+  .cards_title {
+    font-size: 15px;
+  }
+  .cards_amount {
+    font-size: 35px;
+  }
+  .cards_icon {
+    font-size: 40px;
+  }
 }
