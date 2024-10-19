@@ -30,10 +30,16 @@ const Header = () => {
       </Link>
       <div>
         {isAuthentificated ? (
-          <span className="main-nav-item" onClick={handleLogout}>
-            <i className="fa fa-user-circle"></i>
-            {username}, Lougout
-          </span>
+          <>
+            <Link to="/editPage">
+              <i className="fa-solid fa-gear icon-header"></i>
+              <i className="fa fa-user-circle icon-header"></i>
+              <span className="icon-header username">{username}</span>
+            </Link>
+            <span className="main-nav-item" onClick={handleLogout}>
+              Lougout
+            </span>{" "}
+          </>
         ) : (
           <Link className="main-nav-item" to="/LoginPage">
             <i className="fa fa-user-circle"></i>
