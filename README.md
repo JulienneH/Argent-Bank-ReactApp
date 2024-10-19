@@ -2,6 +2,27 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installation
+
+To install and run the project, follow the steps below:
+
+1. **Clone the repository :**
+
+   ```bash
+   git clone <URL>
+   cd Argent-Bank-ReactApp
+
+   ```
+
+2. **Clone the repository :**
+   npm install
+
+3. **Install React-Redux and Redux Toolkit:**
+   npm install react-redux @reduxjs/toolkit
+
+4. **Start the application:**
+   npm start
+
 ## Available Scripts
 
 In the project directory, you can run:
