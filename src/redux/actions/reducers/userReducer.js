@@ -10,6 +10,14 @@ const initialState = {
   lastName: localStorage.getItem("lastName") || null,
 };
 
+// Fonction pour mettre à jour l'état avec les informations de l'utilisateur
+const updateUserState = (state, payload) => ({
+  ...state,
+  username: payload.username,
+  firstName: payload.firstName,
+  lastName: payload.lastName,
+});
+
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case login.fulfilled.type:
@@ -19,23 +27,13 @@ const userReducer = (state = initialState, action) => {
       localStorage.setItem("firstName", action.payload.firstName);
       localStorage.setItem("lastName", action.payload.lastName);
       return {
-        ...state,
+        ...updateUserState(state, action.payload),
         isAuthentificated: true,
         token: action.payload.token,
-        username: action.payload.username,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
       };
 
     case fetchUserProfile.fulfilled.type:
-      return {
-        ...state,
-        username: action.payload.username,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName, // Récupération des données de l'utilisateur
-      };
-
-    //gérer la mise à jour du username
+      return updateUserState(state, action.payload);
 
     case updateUsername.fulfilled.type:
       localStorage.setItem("username", action.payload.username);
@@ -43,8 +41,6 @@ const userReducer = (state = initialState, action) => {
         ...state,
         username: action.payload.username,
       };
-
-    // Gérer la déconnexion
 
     case logout.type:
       localStorage.removeItem("token");
@@ -69,6 +65,7 @@ const userReducer = (state = initialState, action) => {
         firstName: null,
         lastName: null,
       };
+
     default:
       return state;
   }
