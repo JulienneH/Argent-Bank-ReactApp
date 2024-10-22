@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../redux/actions/authentificationAction";
-import fetchUserProfile from "../redux/actions/actionUserProfile"; // Assurez-vous que le chemin est correct
+import fetchUserProfile from "../redux/actions/actionUserProfile";
 
 const FormLog = () => {
   const [username, setUsername] = useState("");
@@ -19,10 +19,10 @@ const FormLog = () => {
 
     // Vérifie si la connexion a réussi
     if (login.fulfilled.match(resultAction)) {
-      const token = resultAction.payload.token; // Récupérer le token depuis le login
+      const token = resultAction.payload.token;
 
       // Dispatch l'action pour récupérer le profil
-      await dispatch(fetchUserProfile(token)); // Récupérer le profil avec le token
+      await dispatch(fetchUserProfile(token));
       navigate("/AccountsPage");
     } else {
       setErrorMessage("Email ou mot de passe incorrect");

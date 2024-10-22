@@ -11,12 +11,12 @@ export const login = createAsyncThunk("auth/login", async (credentials) => {
 
   if (!response.ok) {
     const errorData = await response.json();
-    throw new Error(errorData.message || "Échec de la connexion");
+    throw new Error(errorData.message || "Login failed.");
   }
 
   const data = await response.json();
 
-  console.log("Données de l’utilisateur après connexion réussie :", data);
+  // console.log("Données de l’utilisateur après connexion réussie :", data);
 
   return {
     token: data.body.token,

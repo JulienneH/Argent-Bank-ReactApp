@@ -14,7 +14,7 @@ const Header = () => {
   //gérer la deconnexion
 
   const handleLogout = () => {
-    dispatch(logout()); //déclenche l'action de déconnexion
+    dispatch(logout());
     navigate("/LoginPage");
   };
 

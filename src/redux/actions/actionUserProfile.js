@@ -16,12 +16,12 @@ const fetchUserProfile = createAsyncThunk(
       );
 
       if (!profileResponse.ok) {
-        throw new Error("Erreur lors de la récupération du profil utilisateur");
+        throw new Error("Error retrieving user profile");
       }
 
       const profileData = await profileResponse.json();
 
-      console.log("Profil de l’utilisateur:", profileData);
+      // console.log("Profil de l’utilisateur:", profileData);
       localStorage.setItem("username", profileData.body.userName);
       localStorage.setItem("firstName", profileData.body.firstName);
       localStorage.setItem("lastName", profileData.body.lastName);

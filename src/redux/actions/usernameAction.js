@@ -18,14 +18,12 @@ export const updateUsername = createAsyncThunk(
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(
-          errorData.message || "Échec de la mise à jour du username"
-        );
+        throw new Error(errorData.message || "Failed to update username");
       }
 
       const data = await response.json();
 
-      console.log("Username après modification :", data);
+      // console.log("Username après modification :", data);
 
       return {
         username: data.body.userName,
