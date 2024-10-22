@@ -25,8 +25,8 @@ const FormLog = () => {
       await dispatch(fetchUserProfile(token));
       navigate("/AccountsPage");
     } else {
-      setErrorMessage("Email ou mot de passe incorrect");
-      console.error("Échec de la connexion :", resultAction.error.message);
+      setErrorMessage("Incorrect email or password");
+      //console.error("Échec de la connexion :", resultAction.error.message);
     }
   };
 
