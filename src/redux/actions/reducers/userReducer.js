@@ -21,7 +21,7 @@ const updateUserState = (state, payload) => ({
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case login.fulfilled.type:
-      console.log("Token après connexion réussie:", action.payload.token);
+      // console.log("Token après connexion réussie:", action.payload.token);
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("username", action.payload.username);
       localStorage.setItem("firstName", action.payload.firstName);
@@ -33,7 +33,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case fetchUserProfile.fulfilled.type:
-      return updateUserState(state, action.payload);
+      return updateUserState(state, action.payload); //met à jour l'état avec les info du profil utilisateur récupérées
 
     case updateUsername.fulfilled.type:
       localStorage.setItem("username", action.payload.username);

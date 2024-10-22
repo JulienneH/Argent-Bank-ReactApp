@@ -5,8 +5,6 @@ import fetchUserProfile from "../redux/actions/actionUserProfile";
 
 const FormUserInfo = () => {
   const [username, setUsername] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [confirmationMessage, setConfirmationMessage] = useState("");
 
   const dispatch = useDispatch();
@@ -21,11 +19,10 @@ const FormUserInfo = () => {
     }
   }, [token, dispatch]);
 
+  //met à jour l'état de username chaque fois que currentUsername change dans le store redux
   useEffect(() => {
     setUsername(currentUsername);
-    setFirstName(currentFirstName);
-    setLastName(currentLastName);
-  }, [currentUsername, currentFirstName, currentLastName]);
+  }, [currentUsername]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,8 +40,7 @@ const FormUserInfo = () => {
   const handleCancel = (event) => {
     event.preventDefault();
     setUsername(currentUsername);
-    setFirstName(currentFirstName);
-    setLastName(currentLastName);
+
     setConfirmationMessage("");
   };
 
@@ -62,23 +58,11 @@ const FormUserInfo = () => {
         </div>
         <div className="input-wrapper">
           <label>First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            disabled
-          />
+          <input type="text" id="firstName" value={currentFirstName} disabled />
         </div>
         <div className="input-wrapper">
           <label>Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            disabled
-          />
+          <input type="text" id="lastName" value={currentLastName} disabled />
         </div>
 
         <button type="submit" className="sign-in-button">
