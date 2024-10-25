@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUsername } from "../redux/actions/usernameAction";
 import fetchUserProfile from "../redux/actions/actionUserProfile";
+import { useNavigate } from "react-router-dom";
 
 const FormUserInfo = () => {
   const [username, setUsername] = useState("");
   const [confirmationMessage, setConfirmationMessage] = useState("");
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const currentUsername = useSelector((state) => state.username);
@@ -31,6 +32,7 @@ const FormUserInfo = () => {
       try {
         await dispatch(updateUsername({ username, token })).unwrap();
         setConfirmationMessage("The username has been successfully changed.");
+        navigate("/AccountsPage");
       } catch (error) {
         setConfirmationMessage("Failed to update username.");
       }
